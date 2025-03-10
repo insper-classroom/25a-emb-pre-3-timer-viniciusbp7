@@ -6,8 +6,6 @@ const int BTN_PIN_R = 28;
 const int LED_PIN_R = 4;
 
 volatile int flag_f_r = 0;
-volatile int timer_active = 0;
-
 
 void btn_callback(uint gpio, uint32_t events) {
     if (events == 0x4) { // fall edge
@@ -28,6 +26,7 @@ bool timer_callback(repeating_timer_t *rt) {
 }
 
 int main() {
+    int timer_active = 0;
     repeating_timer_t timer;
     stdio_init_all();
     gpio_init(LED_PIN_R);
